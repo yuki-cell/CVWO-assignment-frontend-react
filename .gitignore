@@ -9,7 +9,6 @@
 /coverage
 
 # production, comment out because needed to deploy to Netlify
-# /build
 
 # misc
 .DS_Store
