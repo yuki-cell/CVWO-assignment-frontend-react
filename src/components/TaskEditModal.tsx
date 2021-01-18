@@ -96,37 +96,50 @@ function TaskEditModal(props: TaskEditModalProps) {
     const body = (
         <div style={modalStyle} className={classes.paper}>
             <form onSubmit={formik.handleSubmit}>
-                <Box mb={4} justifyContent="center">
-                    <TextField id="outlined-basic" variant="outlined" size="small"
-                      name="name" label="Task Name"
-                      value={formik.values.name}
-                      onChange={formik.handleChange}
-                      error={formik.touched.name && Boolean(formik.errors.name)}
-                      helperText={formik.touched.name && formik.errors.name}
-                    />
-                </Box>
+              <Box mt={10}>
+                <Grid container justify="center" alignItems="center"
+              direction="column">
+                  <Grid item>
+                    <Box mb={1} justifyContent="center">
+                        <TextField id="outlined-basic" variant="outlined" size="small"
+                          name="name" label="Task Name" style={{width: 500}}
+                          value={formik.values.name}
+                          onChange={formik.handleChange}
+                          error={formik.touched.name && Boolean(formik.errors.name)}
+                          helperText={formik.touched.name && formik.errors.name}
+                        />
+                    </Box>
+                  </Grid>
 
-                <Grid item xs={12}>
-                  <ChipInput label="Tags"
-                    value={formik.values.tags_attributes.map((tag)=>tag.name)}
-                    onAdd={chip => handleAddChip(chip)}
-                    onDelete={(chip, index) => handleDeleteChip(chip, index)}
-                  />
-                  {/*<Chip label="Add tag" color="primary" clickable/>*/}
-                </Grid>
+                  <Grid item>
+                    <Box justifyContent="center">
+                      <ChipInput label="Tags"
+                        style = {{width: 500}}
+                        value={formik.values.tags_attributes.map((tag)=>tag.name)}
+                        onAdd={chip => handleAddChip(chip)}
+                        onDelete={(chip, index) => handleDeleteChip(chip, index)}
+                      />
+                    </Box>
+                  </Grid>
 
-                <Grid item container justify="center" xs={12} spacing={3}>
-                    <Grid item container xs={4} justify="center">
-                      <Button size="small" variant="contained" type="submit">
-                          SAVE
-                      </Button>
+                  <Box mt={3}>
+                    <Grid item container justify="center" direction="row"
+                    spacing={5}>
+                      <Grid item>
+                        <Button size="small" variant="contained" color="primary"
+                        type="submit">
+                            SAVE
+                        </Button>
+                      </Grid>
+                      <Grid item>
+                        <Button size="small" variant="contained" onClick={props.onClose}>
+                            CLOSE
+                        </Button>
+                      </Grid>
                     </Grid>
-                    <Grid item container xs={4} justify="center">
-                      <Button size="small" variant="contained" onClick={props.onClose}>
-                          CLOSE
-                      </Button>
-                    </Grid>
+                  </Box>
                 </Grid>
+              </Box>
             </form>
         </div>
     );

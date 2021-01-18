@@ -12,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 import EditRoundedIcon from '@material-ui/icons/EditRounded';
 import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
 
 
 interface TaskListItemProps {
@@ -64,21 +65,30 @@ class TaskListItem extends React.Component<TaskListItemProps, TaskListItemState>
       ))
     }
     return (
-      <ListItem button>
-        <ListItemText primary={this.props.task.name} />
-        {tags}
+      // current task item
+      // <Box mb={1}>
+      //   <Paper>
+          <ListItem button>
+            <ListItemText primary={this.props.task.name} />
+            {tags}
 
-        <IconButton color="primary" onClick={this.handleEditFormOpen}>
-          <EditRoundedIcon />
-        </IconButton>
-        <TaskEditModal open={this.state.editFormOpen} onClose={this.handleEditFormClose}
-          task={this.props.task} app={this.props.app}/>
+            <IconButton color="primary" onClick={this.handleEditFormOpen}>
+              <EditRoundedIcon />
+            </IconButton>
+            <TaskEditModal open={this.state.editFormOpen} onClose={this.handleEditFormClose}
+              task={this.props.task} app={this.props.app}/>
 
-        <IconButton color="secondary"
-          onClick={(event) => this.handleTaskDelete(event, this.props.task.id)} >
-          <DeleteRoundedIcon />
-        </IconButton>
-      </ListItem>
+            <IconButton color="secondary"
+              onClick={(event) => this.handleTaskDelete(event, this.props.task.id)} >
+              <DeleteRoundedIcon />
+            </IconButton>
+          </ListItem>
+      //   </Paper>
+      // </Box>
+
+      // sub task items
+
+
      )
    }
 

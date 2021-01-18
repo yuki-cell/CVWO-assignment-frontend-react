@@ -8,6 +8,7 @@ import { Task } from './Types'
 import TaskListItem from './TaskListItem'
 import App from '../App';
 import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
 
 
 interface TaskListProps {
@@ -21,11 +22,16 @@ class TaskList extends React.Component<TaskListProps, any> {
 
   render() {
     return (
-      <List>
-        { this.props.app.state.filtered_tasks.map( (task: Task) => (
-              <TaskListItem  key={task.id}　app={this.props.app} task={task}/>
-          )) }
-       </List>
+      <Box my={1}>
+        <Paper>
+          <List>
+            { this.props.app.state.filtered_tasks.map( (task: Task) => (
+                  <TaskListItem  key={task.id}　app={this.props.app} task={task}/>
+              )) }
+           </List>
+        </Paper>
+        <br/>
+      </Box>
      )
    }
 

@@ -11,6 +11,9 @@ import App from '../App';
 import { sizing } from '@material-ui/system';
 import LabelRoundedIcon from '@material-ui/icons/LabelRounded';
 import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
+import AddBoxRoundedIcon from '@material-ui/icons/AddBoxRounded';
+import IconButton from '@material-ui/core/IconButton';
 
 interface TaskFormProps {
   app: App
@@ -65,36 +68,39 @@ function TaskForm(props: TaskFormProps) {
   }
 
   return (
-      <form onSubmit={formik.handleSubmit}>
-        <Grid container spacing={2} justify="center"
-          alignItems="center" direction="row">
-            <Grid item>
-              <TextField id="outlined-basic" variant="outlined"
-                name="name" label="Task Name"
-                value={formik.values.name}
-                onChange={formik.handleChange}
-                error={formik.touched.name && Boolean(formik.errors.name)}
-                helperText={formik.touched.name && formik.errors.name}
-                fullWidth={true}
-              />
-            </Grid>
+        <Paper>
+          <form onSubmit={formik.handleSubmit}>
+            <Grid container spacing={2} justify="center"
+              alignItems="center" direction="row">
+                <Grid item xs={5}>
+                  <TextField id="outlined-basic" variant="outlined" size="small"
+                    name="name" label="Task Name"
+                    value={formik.values.name}
+                    onChange={formik.handleChange}
+                    error={formik.touched.name && Boolean(formik.errors.name)}
+                    helperText={formik.touched.name && formik.errors.name}
+                    fullWidth={true}
+                  />
+                </Grid>
 
-            <Grid item>
-              <ChipInput label="Tags"
-                value={formik.values.tags_attributes.map((tag)=>tag.name)}
-                onAdd={chip => handleAddChip(chip)}
-                onDelete={(chip, index) => handleDeleteChip(chip, index)}
-              />
-            </Grid>
+                <Grid item>
+                  <ChipInput label="Tags" size="small"
+                    value={formik.values.tags_attributes.map((tag)=>tag.name)}
+                    onAdd={chip => handleAddChip(chip)}
+                    onDelete={(chip, index) => handleDeleteChip(chip, index)}
+                  />
+                </Grid>
 
-            <Grid item>
-              <Button variant="contained" color="primary" type="submit"
-                fullWidth={true}>
-                Create new task
-              </Button>
+                <Grid item>
+                  <Button variant="contained" color="primary" type="submit">
+                    Add
+                  </Button>
+                </Grid>
+
             </Grid>
-        </Grid>
-      </form>
+          </form>
+        </Paper>
+
     )
 }
 
