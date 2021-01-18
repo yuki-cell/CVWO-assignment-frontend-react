@@ -5,7 +5,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import { Task } from './Types'
-import TaskEditModal from './TaskEditModal'
+import TaskEditDialog from './TaskEditDialog'
 import Chip from '@material-ui/core/Chip';
 import App from '../App';
 import IconButton from '@material-ui/core/IconButton';
@@ -59,7 +59,7 @@ class TaskListItem extends React.Component<TaskListItemProps, TaskListItemState>
     let tags
     if (hasTags) {
       tags = this.props.task.tags.map( (tag: any) => (
-        <Box m={1}>
+        <Box ml={1}>
           <Chip key={tag.id} label={tag.name}/>
         </Box>
       ))
@@ -75,7 +75,7 @@ class TaskListItem extends React.Component<TaskListItemProps, TaskListItemState>
             <IconButton color="primary" onClick={this.handleEditFormOpen}>
               <EditRoundedIcon />
             </IconButton>
-            <TaskEditModal open={this.state.editFormOpen} onClose={this.handleEditFormClose}
+            <TaskEditDialog open={this.state.editFormOpen} onClose={this.handleEditFormClose}
               task={this.props.task} app={this.props.app}/>
 
             <IconButton color="secondary"
