@@ -8,6 +8,9 @@ import ChipInput from 'material-ui-chip-input'
 import { useFormik, FieldArray, Field} from 'formik';
 import * as Yup from 'yup';
 import App from '../App';
+import { sizing } from '@material-ui/system';
+import LabelRoundedIcon from '@material-ui/icons/LabelRounded';
+import Box from '@material-ui/core/Box';
 
 interface TaskFormProps {
   app: App
@@ -63,32 +66,30 @@ function TaskForm(props: TaskFormProps) {
 
   return (
       <form onSubmit={formik.handleSubmit}>
-        <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <InputLabel>Your todo:</InputLabel>
-            </Grid>
-
-            <Grid item xs={12}>
-              <TextField id="outlined-basic" variant="outlined" size="small"
+        <Grid container spacing={2} justify="center"
+          alignItems="center" direction="row">
+            <Grid item>
+              <TextField id="outlined-basic" variant="outlined"
                 name="name" label="Task Name"
                 value={formik.values.name}
                 onChange={formik.handleChange}
                 error={formik.touched.name && Boolean(formik.errors.name)}
                 helperText={formik.touched.name && formik.errors.name}
+                fullWidth={true}
               />
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid item>
               <ChipInput label="Tags"
                 value={formik.values.tags_attributes.map((tag)=>tag.name)}
                 onAdd={chip => handleAddChip(chip)}
                 onDelete={(chip, index) => handleDeleteChip(chip, index)}
               />
-              {/*<Chip label="Add tag" color="primary" clickable/>*/}
             </Grid>
 
-            <Grid item xs={12}>
-              <Button variant="contained" color="primary" type="submit" >
+            <Grid item>
+              <Button variant="contained" color="primary" type="submit"
+                fullWidth={true}>
                 Create new task
               </Button>
             </Grid>

@@ -7,6 +7,10 @@ import TaskSearchBar from './components/TaskSearchBar'
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
 import { Task } from './components/Types'
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import red from '@material-ui/core/colors/red';
+import blue from '@material-ui/core/colors/blue';
 
 interface State {
   tasks: Task[]
@@ -104,12 +108,20 @@ class App extends React.Component<any, State> {
   render() {
     return (
       <div className="App">
-        <Box color="text.primary">
-          <h1 className="siimple-box-title siimple--color-white">React Todo App</h1>
-          <TaskForm app={this} />
-          <div className="siimple-rule"></div>
-          <TaskSearchBar tasks={this.state.tasks} setFilteredTasks={this.setFilteredTasks}/>
-          <TaskList app={this} />
+        <Box color="text.primary" m={3}>
+          <Box mb={3}>
+            <Paper elevation={3}>
+              <h1>React Todo App</h1>
+              <TaskForm app={this} />
+            </Paper>
+          </Box>
+          <Paper elevation={3}>
+            <Box mx={2}>
+              <br/>
+              <TaskSearchBar tasks={this.state.tasks} setFilteredTasks={this.setFilteredTasks}/>
+              <TaskList app={this} />
+            </Box>
+          </Paper>
         </Box>
       </div>
       )

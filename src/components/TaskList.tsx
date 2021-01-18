@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import { Task } from './Types'
 import TaskListItem from './TaskListItem'
 import App from '../App';
+import Box from '@material-ui/core/Box';
 
 
 interface TaskListProps {
@@ -22,7 +23,7 @@ class TaskList extends React.Component<TaskListProps, any> {
     return (
       <List>
         { this.props.app.state.filtered_tasks.map( (task: Task) => (
-            <TaskListItem  key={task.id}　app={this.props.app} task={task} />
+              <TaskListItem  key={task.id}　app={this.props.app} task={task}/>
           )) }
        </List>
      )

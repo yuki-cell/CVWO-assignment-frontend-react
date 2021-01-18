@@ -8,6 +8,11 @@ import { Task } from './Types'
 import TaskEditModal from './TaskEditModal'
 import Chip from '@material-ui/core/Chip';
 import App from '../App';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
+import EditRoundedIcon from '@material-ui/icons/EditRounded';
+import Box from '@material-ui/core/Box';
+
 
 interface TaskListItemProps {
   app: App
@@ -53,7 +58,9 @@ class TaskListItem extends React.Component<TaskListItemProps, TaskListItemState>
     let tags
     if (hasTags) {
       tags = this.props.task.tags.map( (tag: any) => (
+        <Box m={1}>
           <Chip key={tag.id} label={tag.name}/>
+        </Box>
       ))
     }
     return (
@@ -61,16 +68,16 @@ class TaskListItem extends React.Component<TaskListItemProps, TaskListItemState>
         <ListItemText primary={this.props.task.name} />
         {tags}
 
-        <Button variant="contained" color="primary" onClick={this.handleEditFormOpen}>
-          Edit
-        </Button>
+        <IconButton color="primary" onClick={this.handleEditFormOpen}>
+          <EditRoundedIcon />
+        </IconButton>
         <TaskEditModal open={this.state.editFormOpen} onClose={this.handleEditFormClose}
           task={this.props.task} app={this.props.app}/>
 
-        <Button variant="contained" color="primary"
+        <IconButton color="secondary"
           onClick={(event) => this.handleTaskDelete(event, this.props.task.id)} >
-          Delete
-        </Button>
+          <DeleteRoundedIcon />
+        </IconButton>
       </ListItem>
      )
    }

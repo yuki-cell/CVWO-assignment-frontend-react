@@ -36,7 +36,6 @@ function TaskSearchBar(props: TaskSearchBarProps) {
 
   return (
     <div>
-      Search by tag:
       <SearchBar
         value={keyword}
         onChange={handleChange}
