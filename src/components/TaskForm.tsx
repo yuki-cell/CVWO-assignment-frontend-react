@@ -92,8 +92,8 @@ function TaskForm(props: TaskFormProps) {
                     />
                   </Grid>
 
-                  <Grid item style={{display: "inline-block"}} sm={1} xs={12}>
-                    <Button variant="contained" color="primary" type="submit">
+                  <Grid item style={{display: "inline-block"}} sm={2} xs={12}>
+                    <Button variant="contained" color="primary" type="submit" fullWidth>
                       Add
                     </Button>
                   </Grid>
