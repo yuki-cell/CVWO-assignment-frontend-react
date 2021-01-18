@@ -71,7 +71,7 @@ function TaskForm(props: TaskFormProps) {
         <Paper>
           <form onSubmit={formik.handleSubmit}>
             <Box mx={2}>
-              <Grid container spacing={2} justify="flex-start"
+              <Grid container spacing={2} justify="center"
                 alignItems="center" direction="row">
                   <Grid item sm={7} xs={8}>
                     <TextField id="outlined-basic" variant="outlined" size="small"

@@ -33,7 +33,7 @@ function TaskApp(props: TaskAppProps) {
   const classes = useStyles()
   return (
     <div className="TodoApp">
-      <Box color="text.primary" m={3}>
+      <Box color="text.primary" width="90%" maxWidth={1300} mx={"auto"} mt={3}>
         <Typography variant="h5" gutterBottom
         style={{fontFamily: 'Lato', fontWeight: 700}}>
           React Todo App
