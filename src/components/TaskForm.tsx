@@ -72,9 +72,9 @@ function TaskForm(props: TaskFormProps) {
           <form onSubmit={formik.handleSubmit}>
             <Grid container spacing={2} justify="center"
               alignItems="center" direction="row">
-                <Grid item xs={5}>
+                <Grid item xs={7}>
                   <TextField id="outlined-basic" variant="outlined" size="small"
-                    name="name" label="Task Name"
+                    name="name" label="Add new task"
                     value={formik.values.name}
                     onChange={formik.handleChange}
                     error={formik.touched.name && Boolean(formik.errors.name)}

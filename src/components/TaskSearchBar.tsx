@@ -37,6 +37,7 @@ function TaskSearchBar(props: TaskSearchBarProps) {
   return (
     <div>
       <SearchBar
+        placeholder="Search by tag"
         value={keyword}
         onChange={handleChange}
         onCancelSearch={handleCancelSearch}
