@@ -70,34 +70,36 @@ function TaskForm(props: TaskFormProps) {
   return (
         <Paper>
           <form onSubmit={formik.handleSubmit}>
-            <Grid container spacing={2} justify="center"
-              alignItems="center" direction="row">
-                <Grid item xs={7}>
-                  <TextField id="outlined-basic" variant="outlined" size="small"
-                    name="name" label="Add new task"
-                    value={formik.values.name}
-                    onChange={formik.handleChange}
-                    error={formik.touched.name && Boolean(formik.errors.name)}
-                    helperText={formik.touched.name && formik.errors.name}
-                    fullWidth={true}
-                  />
-                </Grid>
+            <Box mx={2}>
+              <Grid container spacing={2} justify="flex-start"
+                alignItems="center" direction="row">
+                  <Grid item sm={7} xs={8}>
+                    <TextField id="outlined-basic" variant="outlined" size="small"
+                      name="name" label="Add new task"
+                      value={formik.values.name}
+                      onChange={formik.handleChange}
+                      error={formik.touched.name && Boolean(formik.errors.name)}
+                      helperText={formik.touched.name && formik.errors.name}
+                      fullWidth
+                    />
+                  </Grid>
 
-                <Grid item>
-                  <ChipInput label="Tags" size="small"
-                    value={formik.values.tags_attributes.map((tag)=>tag.name)}
-                    onAdd={chip => handleAddChip(chip)}
-                    onDelete={(chip, index) => handleDeleteChip(chip, index)}
-                  />
-                </Grid>
+                  <Grid item sm={3} xs={4}>
+                    <ChipInput label="Tags" size="small" fullWidth
+                      value={formik.values.tags_attributes.map((tag)=>tag.name)}
+                      onAdd={chip => handleAddChip(chip)}
+                      onDelete={(chip, index) => handleDeleteChip(chip, index)}
+                    />
+                  </Grid>
 
-                <Grid item>
-                  <Button variant="contained" color="primary" type="submit">
-                    Add
-                  </Button>
-                </Grid>
+                  <Grid item style={{display: "inline-block"}} sm={1} xs={12}>
+                    <Button variant="contained" color="primary" type="submit">
+                      Add
+                    </Button>
+                  </Grid>
 
-            </Grid>
+              </Grid>
+            </Box>
           </form>
         </Paper>
 
