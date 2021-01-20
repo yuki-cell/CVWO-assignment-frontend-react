@@ -1,8 +1,10 @@
 export type Task = {
     id: number
+    parent_task_id: number
     name: string
-    done: boolean
+    completed: boolean
     tags: Tag[]
+    sub_tasks: Task[]
 }
 
 export type Tag = {

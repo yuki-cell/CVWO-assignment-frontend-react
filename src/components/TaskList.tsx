@@ -13,27 +13,32 @@ import Paper from '@material-ui/core/Paper';
 
 interface TaskListProps {
   app: App
+  tasks: Task[]
 }
 
-class TaskList extends React.Component<TaskListProps, any> {
-  constructor(props: TaskListProps) {
-    super(props)
+function TaskList(props: TaskListProps) {
+  const body = () => {
+    const hasTasks = props.tasks.length > 0
+    if (hasTasks) {
+      return props.tasks.map( (task: Task) => (
+          <TaskListItem key={task.id} app={props.app} task={task}/>
+      ))
+    } else {
+      return <p>No task</p>
+    }
   }
 
-  render() {
-    return (
-      <Box my={1}>
-        <Paper>
-          <List>
-            { this.props.app.state.filtered_tasks.map( (task: Task) => (
-                  <TaskListItem  key={task.id}　app={this.props.app} task={task}/>
-              )) }
-           </List>
-        </Paper>
-        <br/>
-      </Box>
-     )
-   }
+  return (
+    <Box my={1}>
+      <Paper>
+        <List>
+          {body()}
+         </List>
+      </Paper>
+      <br/>
+    </Box>
+   )
+
 
 }
 
