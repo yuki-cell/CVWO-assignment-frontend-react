@@ -120,7 +120,7 @@ function TaskListItem(props: TaskListItemProps) {
 
       {/* current task item*/}
       <ListItem>
-        <Grid container justify="center" alignItems="center" >
+        <Grid container justify="flex-start" alignItems="center" >
 
           {getShowSubTaskIcon()}
           <Checkbox checked={isTaskCompleted}
