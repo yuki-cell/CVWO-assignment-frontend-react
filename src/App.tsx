@@ -85,7 +85,7 @@ class App extends React.Component<any, State> {
       })
       sub_tasks = new_sub_tasks.slice()
     }
-    
+
     this.setTasks(tasks)
   }
 
