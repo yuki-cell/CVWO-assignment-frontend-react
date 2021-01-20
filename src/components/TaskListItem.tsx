@@ -120,16 +120,16 @@ function TaskListItem(props: TaskListItemProps) {
 
       {/* current task item*/}
       <ListItem>
-        <Grid container justify="center" alignItems="center" >
+        <Grid container justify="flex-start" alignItems="center" >
 
           {getShowSubTaskIcon()}
           <Checkbox checked={isTaskCompleted}
-            color="primary" onChange={handleTaskCompleteChange}
-            inputProps={{ 'aria-label': 'secondary checkbox' }}
-          />
-
+          color="primary" onChange={handleTaskCompleteChange}
+          inputProps={{ 'aria-label': 'secondary checkbox' }}
+        />
           <ListItemText primary={props.task.name}/>
           {getTagsView()}
+
 
           <Tooltip title="add subtask">
             <IconButton color="primary" onClick={handleAddSubTaskFormOpen}>
