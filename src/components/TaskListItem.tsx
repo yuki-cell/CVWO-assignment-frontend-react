@@ -124,12 +124,12 @@ function TaskListItem(props: TaskListItemProps) {
 
           {getShowSubTaskIcon()}
           <Checkbox checked={isTaskCompleted}
-            color="primary" onChange={handleTaskCompleteChange}
-            inputProps={{ 'aria-label': 'secondary checkbox' }}
-          />
-
+          color="primary" onChange={handleTaskCompleteChange}
+          inputProps={{ 'aria-label': 'secondary checkbox' }}
+        />
           <ListItemText primary={props.task.name}/>
           {getTagsView()}
+
 
           <Tooltip title="add subtask">
             <IconButton color="primary" onClick={handleAddSubTaskFormOpen}>
