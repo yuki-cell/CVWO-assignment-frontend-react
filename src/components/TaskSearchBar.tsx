@@ -1,33 +1,22 @@
 import React, { useState } from 'react';
 import { Task, Tag } from './Types'
 import SearchBar from "material-ui-search-bar";
+import App from '../App';
 
 interface TaskSearchBarProps {
   tasks: Task[]
   setFilteredTasks: any
+  app: App
 }
 
 function TaskSearchBar(props: TaskSearchBarProps) {
-  const [keyword, setKeyWord] = useState("")
 
   const handleChange = (newValue: string) => {
-    setKeyWord(newValue)
-    handleSearch(newValue)
-  }
-
-  const handleSearch = (keyword: string) => {
-    let tasks = props.tasks.slice()
-    // case-insensitive search, search tasks that have matching tag
-    if (keyword != "") {
-      tasks = tasks.filter((task) => hasMatchingTag(task.tags, keyword))
-    }
-    props.setFilteredTasks(tasks)
-  }
-
-  const hasMatchingTag = (tags: Tag[], keyword: string) => {
-    return tags.some((tag) => {
-      return tag.name.toLowerCase().includes(keyword.toLowerCase())
-    })
+    // update search word
+    props.app.setSearchWord(newValue)
+    // filter task
+    var filtered_task = props.app.filterTaskByTag(newValue, props.tasks)
+    props.setFilteredTasks(filtered_task)
   }
 
   const handleCancelSearch = () => {
@@ -38,7 +27,7 @@ function TaskSearchBar(props: TaskSearchBarProps) {
     <div>
       <SearchBar
         placeholder="Search by tag"
-        value={keyword}
+        value={props.app.state.searchWord}
         onChange={handleChange}
         onCancelSearch={handleCancelSearch}
       />

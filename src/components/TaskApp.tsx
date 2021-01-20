@@ -31,6 +31,9 @@ interface TaskAppProps{
 
 function TaskApp(props: TaskAppProps) {
   const classes = useStyles()
+  const getParentTasks = () => {
+    return props.app.state.filtered_tasks.filter((task) => task.parent_task_id == null)
+  }
   return (
     <div className="TodoApp">
       <Box color="text.primary" width="90%" maxWidth={1300} mx={"auto"} mt={3}>
@@ -51,8 +54,9 @@ function TaskApp(props: TaskAppProps) {
         <Paper elevation={3} className={classes.bluePaper}>
           <Box mx={2}>
             <br/>
-            <TaskSearchBar tasks={props.app.state.tasks} setFilteredTasks={props.app.setFilteredTasks}/>
-            <TaskList app={props.app} />
+            <TaskSearchBar tasks={props.app.state.tasks}
+            setFilteredTasks={props.app.setFilteredTasks} app={props.app}/>
+            <TaskList app={props.app} tasks={getParentTasks()}/>
           </Box>
         </Paper>
       </Box>
