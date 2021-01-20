@@ -25,6 +25,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Badge from '@material-ui/core/Badge';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Tooltip from '@material-ui/core/Tooltip';
+import Grid from '@material-ui/core/Grid';
 
 interface TaskListItemProps {
   app: App
@@ -119,39 +120,42 @@ function TaskListItem(props: TaskListItemProps) {
 
       {/* current task item*/}
       <ListItem>
-        {getShowSubTaskIcon()}
-        <Checkbox checked={isTaskCompleted}
-          color="primary" onChange={handleTaskCompleteChange}
-          inputProps={{ 'aria-label': 'secondary checkbox' }}
-        />
+        <Grid container justify="center" alignItems="center" >
 
-        <ListItemText primary={props.task.name}/>
-        {getTagsView()}
+          {getShowSubTaskIcon()}
+          <Checkbox checked={isTaskCompleted}
+            color="primary" onChange={handleTaskCompleteChange}
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
+          />
 
-        <Tooltip title="add subtask">
-          <IconButton color="primary" onClick={handleAddSubTaskFormOpen}>
-            <AddBoxRoundedIcon />
-          </IconButton>
-        </Tooltip>
-        <SubTaskAddDialog open={addSubTaskFormOpen} onClose={handleAddSubTaskFormClose}
-        app={props.app} task={props.task}/>
+          <ListItemText primary={props.task.name}/>
+          {getTagsView()}
 
-        <Tooltip title="edit task">
-          <IconButton color="primary" onClick={handleEditFormOpen}>
-            <EditRoundedIcon />
-          </IconButton>
-        </Tooltip>
-        <TaskEditDialog open={editFormOpen} onClose={handleEditFormClose}
-          task={props.task} app={props.app}/>
+          <Tooltip title="add subtask">
+            <IconButton color="primary" onClick={handleAddSubTaskFormOpen}>
+              <AddBoxRoundedIcon />
+            </IconButton>
+          </Tooltip>
+          <SubTaskAddDialog open={addSubTaskFormOpen} onClose={handleAddSubTaskFormClose}
+          app={props.app} task={props.task}/>
 
-        <Tooltip title="delete task">
-          <IconButton color="secondary" onClick={handleDeleteFormOpen}>
-            <DeleteRoundedIcon />
-          </IconButton>
-        </Tooltip>
-        <TaskDeleteDialog open={deleteFormOpen} onClose={handleDeleteFormClose}
-          task={props.task} app={props.app}/>
+          <Tooltip title="edit task">
+            <IconButton color="primary" onClick={handleEditFormOpen}>
+              <EditRoundedIcon />
+            </IconButton>
+          </Tooltip>
+          <TaskEditDialog open={editFormOpen} onClose={handleEditFormClose}
+            task={props.task} app={props.app}/>
 
+          <Tooltip title="delete task">
+            <IconButton color="secondary" onClick={handleDeleteFormOpen}>
+              <DeleteRoundedIcon />
+            </IconButton>
+          </Tooltip>
+          <TaskDeleteDialog open={deleteFormOpen} onClose={handleDeleteFormClose}
+            task={props.task} app={props.app}/>
+
+        </Grid>
       </ListItem>
 
       {/*sub task items*/}
