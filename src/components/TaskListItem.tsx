@@ -117,7 +117,6 @@ function TaskListItem(props: TaskListItemProps) {
 
   return (
     <div>
-
       {/* current task item*/}
       <ListItem>
         <Grid container justify="flex-start" alignItems="center" >
@@ -127,7 +126,9 @@ function TaskListItem(props: TaskListItemProps) {
           color="primary" onChange={handleTaskCompleteChange}
           inputProps={{ 'aria-label': 'secondary checkbox' }}
         />
-          <ListItemText primary={props.task.name}/>
+          {isTaskCompleted?
+          <ListItemText primary={props.task.name}  style={{textDecoration:"line-through"}}/>
+          : <ListItemText primary={props.task.name}/>}
           {getTagsView()}
 
 
